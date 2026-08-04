@@ -4,29 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PointCut UI — 20260701-124418</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 <style>
-  main.container { max-width: min(1500px, 95vw); }
-  nav[data-toc] { position: sticky; top: 0; z-index: 1; padding: .5rem 0; font-size: .8rem;
-                  background: var(--pico-background-color); }
-  nav[data-toc] a { margin-right: .75rem; white-space: nowrap; }
-  div[data-pair] { display: flex; gap: 1rem; align-items: flex-start;
-                   justify-content: center; flex-wrap: wrap; }
-  div[data-pair] figure { flex: 0 1 auto; min-width: 0; margin: 0; text-align: center; }
-  /* Cap by height, not width: a portrait screenshot is 2.2x taller than wide, so
-     width:100% pushes it past the viewport and the pair can never be seen together. */
-  div[data-pair] img { max-height: 78vh; width: auto; max-width: 100%; border-radius: 8px;
-                       border: 1px solid var(--pico-muted-border-color); }
-  figcaption { font-size: .75rem; }
+  /* Self-contained on purpose: a CDN stylesheet that fails to load silently
+     breaks the whole layout, and this page has to work offline too. */
+  :root { --bg: #fff; --fg: #14161a; --muted: #6b7280; --line: #d8dce2; --accent: #2563eb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14161a; --fg: #e8eaed; --muted: #9aa2ad; --line: #333941; --accent: #7aa2f7; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  main { max-width: 1500px; margin: 0 auto; padding: 0 1rem 3rem; }
+  h1 { font-size: 1.3rem; } h2 { font-size: 1rem; margin: 1.5rem 0 .5rem; }
+  a { color: var(--accent); }
+  nav[data-toc] { position: sticky; top: 0; z-index: 1; padding: .6rem 0; font-size: .8rem;
+                  background: var(--bg); border-bottom: 1px solid var(--line); }
+  nav[data-toc] a { margin-right: .75rem; white-space: nowrap; display: inline-block; }
+  div[data-pair] { display: flex; gap: 1rem; align-items: flex-start; justify-content: center; }
+  figure { margin: 0; text-align: center; }
+  /* Size by height: a phone screenshot is 2.2x taller than wide, so anything
+     width-driven runs off the bottom of the viewport and the pair is unreadable. */
+  div[data-pair] img { height: 78vh; width: auto; max-width: 46vw; object-fit: contain;
+                       border-radius: 8px; border: 1px solid var(--line); }
+  figcaption { font-size: .75rem; color: var(--muted); padding-top: .25rem; }
+  table { border-collapse: collapse; } td, th { text-align: left; padding: .3rem 1.5rem .3rem 0; }
   small[data-status] { border-radius: 6px; padding: .1rem .4rem; font-size: .7rem;
-                       text-transform: uppercase; letter-spacing: .04em; }
-  small[data-status="changed"] { background: var(--pico-del-color); color: #fff; }
-  small[data-status="new"]     { background: var(--pico-ins-color); color: #fff; }
-  small[data-status="same"]    { background: var(--pico-muted-border-color); }
+                       text-transform: uppercase; letter-spacing: .04em; color: #fff; }
+  small[data-status="changed"] { background: #c0392b; }
+  small[data-status="new"]     { background: #1e8e4f; }
+  small[data-status="same"]    { background: var(--muted); }
 </style>
 </head>
 <body>
-<main class="container">
+<main>
 <p><a href="../">&larr; all runs</a></p>
 <h1>20260701-124418</h1>
 <p><small>before = <strong>20260701-123707</strong></small></p>
