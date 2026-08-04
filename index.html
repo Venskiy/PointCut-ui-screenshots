@@ -6,12 +6,16 @@
 <title>PointCut UI screenshots</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 <style>
+  main.container { max-width: min(1500px, 95vw); }
   nav[data-toc] { position: sticky; top: 0; z-index: 1; padding: .5rem 0; font-size: .8rem;
                   background: var(--pico-background-color); }
   nav[data-toc] a { margin-right: .75rem; white-space: nowrap; }
-  div[data-pair] { display: flex; gap: 1rem; align-items: flex-start; overflow-x: auto; }
-  div[data-pair] figure { flex: 1; min-width: 0; margin: 0; }
-  div[data-pair] img { width: 100%; border-radius: 8px;
+  div[data-pair] { display: flex; gap: 1rem; align-items: flex-start;
+                   justify-content: center; flex-wrap: wrap; }
+  div[data-pair] figure { flex: 0 1 auto; min-width: 0; margin: 0; text-align: center; }
+  /* Cap by height, not width: a portrait screenshot is 2.2x taller than wide, so
+     width:100% pushes it past the viewport and the pair can never be seen together. */
+  div[data-pair] img { max-height: 78vh; width: auto; max-width: 100%; border-radius: 8px;
                        border: 1px solid var(--pico-muted-border-color); }
   figcaption { font-size: .75rem; }
   small[data-status] { border-radius: 6px; padding: .1rem .4rem; font-size: .7rem;
