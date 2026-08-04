@@ -22,10 +22,12 @@
   nav[data-toc] a { margin-right: .75rem; white-space: nowrap; display: inline-block; }
   div[data-pair] { display: flex; gap: 1rem; align-items: flex-start; justify-content: center; }
   figure { margin: 0; text-align: center; }
-  /* Size by height: a phone screenshot is 2.2x taller than wide, so anything
-     width-driven runs off the bottom of the viewport and the pair is unreadable. */
-  div[data-pair] img { height: 78vh; width: auto; max-width: 46vw; object-fit: contain;
+  /* Bound both axes and let the intrinsic ratio pick which one binds: portrait shots
+     hit the height cap, the landscape ones (06/07) hit the width cap. Forcing either
+     dimension letterboxes the other orientation into a mostly-empty box. */
+  div[data-pair] img { max-height: 78vh; max-width: 46vw; width: auto; height: auto;
                        border-radius: 8px; border: 1px solid var(--line); }
+  div[data-pair] figure:only-child img { max-width: 92vw; }
   figcaption { font-size: .75rem; color: var(--muted); padding-top: .25rem; }
   table { border-collapse: collapse; } td, th { text-align: left; padding: .3rem 1.5rem .3rem 0; }
   small[data-status] { border-radius: 6px; padding: .1rem .4rem; font-size: .7rem;
